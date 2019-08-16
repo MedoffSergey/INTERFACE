@@ -1,0 +1,43 @@
+doctype html
+html
+  head
+    title= title
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+    link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+  body
+    //ШАПКА СТРАНИЦЫ
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
+      a.navbar-brand(href='#')  
+      //  img(src="img/logo.svg" width = "30" height="30")
+      h1.titleName Addel 
+      
+      div.collapse.navbar-collapse  
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href="/") Главная
+          li.nav-item
+            a.nav-link(href="#") О нас    
+          li.nav-item
+            a.nav-link(href="#") Контакты  
+        // Окно поиска
+        form.form-inline 
+          input.form-control(type="text" placeholder="Поиск")
+          button.btn.btn-outline-success.myBtnSearch Искать
+    
+    div.container.content      
+      h1.subtitle Список файлов в текущей дирректории:
+      ul.menu
+      each val in value
+        li(class='menu_li' id = val+'a')
+          span.searchQuery= val 
+          a(class='button button--remove ' id = val  , onclick = 'delete_files("'+val+'"),delete_files("'+val+'a'+'")') удалить
+      else
+        li.empty Ничего не вижу
+    
+      
+      button(class='button btn-lg button--add ' type="button"  onclick='add_files()') Добавить новый файл +
+      
+
+    script(src="script.js")
+  style
+    include style.css
